@@ -32,6 +32,7 @@ app.all('*', function (req, res, next) {
 
 app.set('port', process.env.PORT || 8200);
 
+//Proxy for Salesforce REST requests
 app.listen(app.get('port'), function () {
     console.log('Proxy server listening on port ' + app.get('port'));
 });

@@ -17,10 +17,12 @@
 <script src="js/app.js"></script>
 <script>
 
-    // Get your Connected App id from the server
+    // Ajax call to the server to get the Connected App Id
+    // HTML is built dynamically in JavaScript in the app.js file
     $.ajax({url: '/appid'}).done(function(result) {
 
         // Initialize forcejs for that Connected app
+        // Using ForceJS to integrate with Salesforce
         force.init({
             appId: result.appId
         });

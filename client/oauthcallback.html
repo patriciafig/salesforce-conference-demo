@@ -1,6 +1,12 @@
 <html>
 <body>
 <script>
+    /*
+     Salesforce authentication process loads the redirect URI you specified in your Connected App and passes the
+     access token and other OAuth values (server instance, refresh token, and so on)
+     in the query string. oauthcallback.html simply passes that information to the ForceJS library which uses
+     it to make REST API calls to your Salesforce instance.
+     */
     window.opener.force.oauthCallback(window.location.href);
     window.close();
 </script>

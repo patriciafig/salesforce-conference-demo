@@ -1,8 +1,9 @@
+//function resposible for retrieving the list of sessions from Salesforce
 function getSessionList(success, error) {
   var soql = "SELECT Session__r.Id, Session__r.Name FROM Session_Speaker__c";
   force.query(soql, success, error);
 }
-
+//function responsible for retrieving the details of a specific session from Salesforce
 function getSessionDetails(sessionId, success, error) {
   var soql = "SELECT Session__r.Name, " +
   "Session__r.Session_Date__c, " +
@@ -12,7 +13,7 @@ function getSessionDetails(sessionId, success, error) {
   "WHERE Session__r.Id = '" + sessionId + "'";
   force.query(soql, success, error);
 }
-
+//function responsible for generating the HTML for the session list page
 function showSessionList() {
     getSessionList(
         function (data) {
@@ -37,7 +38,7 @@ function showSessionList() {
         });
     return false;
 }
-
+//function responsible for generating the HTML for the session details page.
 function showSessionDetails(sessionId) {
 
     getSessionDetails(sessionId,
@@ -75,5 +76,6 @@ function showSessionDetails(sessionId) {
 }
 
 var slider = new PageSlider($('body')); // Initialize PageSlider micro-library for nice and hardware-accelerated page transitions
+//router object responsible for detecting hashtag changes in the URL and loading the corresponding page.
 router.addRoute('', showSessionList);
 router.addRoute('sessions/:id', showSessionDetails);
